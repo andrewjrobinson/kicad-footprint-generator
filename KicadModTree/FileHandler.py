@@ -34,6 +34,13 @@ class FileHandler(object):
         f.write(output)
 
         f.close()
+        
+    def writeStream(self, stream):
+        '''
+        Write the output of serialize to a stream (using write() method)
+        '''
+        output = self.serialize()
+        stream.write(output)
 
     def serialize(self):
         '''
@@ -52,6 +59,14 @@ class FileHandler(object):
         input = f.read()
 
         return self.unserialize(input)
+
+    def readStream(self, stream):
+        '''
+        Reads from a file-like object (using read() method)
+        '''
+        inp = stream.read()
+
+        return self.unserialize(inp)
 
     def unserialize(self, input):
         '''
