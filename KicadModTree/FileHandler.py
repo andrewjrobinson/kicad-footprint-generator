@@ -28,12 +28,10 @@ class FileHandler(object):
         '''
         Write the output of serialize to a file
         '''
-        f = open(filename, "w")
+        with open(filename, "w") as f:
 
-        output = self.serialize()
-        f.write(output)
-
-        f.close()
+            output = self.serialize()
+            f.write(output)
 
     def serialize(self):
         '''
@@ -43,15 +41,15 @@ class FileHandler(object):
 
         return None
 
-    def readFile(filename):
+    def readFile(self, filename):
         '''
         Read a footprint file and parse it
         '''
-        f = open(filename, "r")
+        with open(filename, "r") as f:
 
-        input = f.read()
-
-        return self.unserialize(input)
+            inp = f.read()
+            return self.unserialize(inp)
+        return None
 
     def unserialize(self, input):
         '''
